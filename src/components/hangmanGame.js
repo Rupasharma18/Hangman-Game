@@ -9,7 +9,7 @@ import Image6 from './images/6.jpg'
 
 
 const fruitsName = [
-    "apple","mango","banana","grapes","litchi", "cc"
+    "APPLE","MANGO","BANANA","GRAPES","LITCHI", "CC"
 ];
 const randomWords =() => {
     return fruitsName[Math.floor(Math.random() *fruitsName.length)];
@@ -49,7 +49,6 @@ class Game extends React.Component {
             key={letter}
             value={letter}
             onClick={this.handleGuess}
-            disabled= {this.state.guessed.has(letter)}
             >
                 {letter}
             </button>
@@ -67,11 +66,8 @@ class Game extends React.Component {
     
     render(){
         let gameOver = this.state.mistake >= this.props.maxWrong;
-        let isWinner = this.GuessWords() === this.state.answer;
-        console.log( this.GuessWords())
-        // console.log(this.state.answer)
+        let isWinner = this.GuessWords().join("") === this.state.answer;
         let gameStart = this.createButtons();
-      
         if(isWinner){
             gameStart = "you win"
         }
@@ -82,10 +78,11 @@ class Game extends React.Component {
             <div className="container">
                 <h1 className="text-center">Hangman</h1>
                 <p className="text-right">{`${this.state.mistake}/${this.props.maxWrong} wrong guesses`}</p>
-                <p className="text-center">
-                    <img src={this.props.images[this.state.mistake]}/>
+                <p className="text-center" style={{marginTop:-70}}>
+                    <img src={this.props.images[this.state.mistake]} alt="i" style={{height: 300}}/>
                 </p>
                 <hr/>
+                <p className="text-center" >Guess The Fruits Name</p>
                 <div className="text-center">
                     <p>
                         {!gameOver ? this.GuessWords(): this.state.answer}
