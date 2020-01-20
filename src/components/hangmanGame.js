@@ -9,7 +9,7 @@ import Image6 from './images/6.jpg'
 
 
 const fruitsName = [
-    "APPLE","MANGO","BANANA","GRAPES","LITCHI", "CC"
+    "APPLE","MANGO","BANANA","GRAPES","LITCHI", "APRICOTS", "AVOCADOS"
 ];
 const randomWords =() => {
     return fruitsName[Math.floor(Math.random() *fruitsName.length)];
